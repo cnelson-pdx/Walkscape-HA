@@ -1,0 +1,377 @@
+type: vertical-stack
+cards:
+  - type: custom:button-card
+    entity: sensor.walkscape_character_name
+    show_icon: false
+    show_name: false
+    styles:
+      card:
+        - background: linear-gradient(135deg,
+        - border-radius: 16px
+        - padding: 5px
+        - box-shadow: none
+      grid:
+        - position: relative
+        - grid-template-areas: "\"profile\""
+        - grid-template-columns: 1fr
+        - grid-template-rows: auto
+      custom_fields:
+        profile:
+          - padding: 8px 20px
+          - margin: 0
+          - justify-self: start
+    custom_fields:
+      profile: |
+        [[[
+          const profile = states['sensor.walkscape_profile'].state;
+          const username = states['sensor.walkscape_character_name'].state;
+          return `
+            <div style="display: flex; align-items: center;">
+              <img src="https://api.web.walkscape.app/portal/shared/characters/${profile}/pfp"
+                   style="width: 48px; height: 48px; border-radius: 8px; border: 2px solid #f59e0b; margin-right: 16px;">
+              <h2 style="margin: 0; font-size: 1.8em; color: #f5f5f5;">${username}</h2>
+            </div>
+          `;
+        ]]]
+  - type: horizontal-stack
+    cards:
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: template
+            icon: mdi:walk
+            icon_color: green
+            content: >-
+              {{ (states("sensor.walkscape_total_steps") | float / 1000000) |
+              round(2) }}M Steps
+            card_mod:
+              style: |
+                ha-card {
+                  background: linear-gradient(135deg, #1a2332 0%, #2d3748 100%);
+                  --chip-background: rgba(95, 241, 107, 0.2);
+                }
+        alignment: center
+        card_mod:
+          style: |
+            ha-card {
+              background: linear-gradient(135deg, #1a2332 0%, #2d3748 100%);
+              box-shadow: none;
+              border: none;
+            }
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: template
+            icon: mdi:check
+            icon_color: teal
+            content: >-
+              {{ (states("sensor.walkscape_total_xp") | float / 1000000) |
+              round(2) }}M XP
+            card_mod:
+              style: |
+                ha-card {
+                  background: linear-gradient(135deg, #1a2332 0%, #2d3748 100%);
+                  --chip-background: rgba(54, 211, 153, 0.2);
+                }
+        alignment: center
+        card_mod:
+          style: |
+            ha-card {
+              background: linear-gradient(135deg, #1a2332 0%, #2d3748 100%);
+              box-shadow: none;
+              border: none;
+            }
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: template
+            icon: mdi:chart-line
+            icon_color: orange
+            content: Lvl {{ states("sensor.walkscape_total_level") }}
+            card_mod:
+              style: |
+                ha-card {
+                  background: linear-gradient(135deg, #1a2332 0%, #2d3748 100%);
+                  --chip-background: rgba(230, 152, 97, 0.2);
+                }
+        alignment: center
+        card_mod:
+          style: |
+            ha-card {
+              background: linear-gradient(135deg, #1a2332 0%, #2d3748 100%);
+              box-shadow: none;
+              border: none;
+            }
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: template
+            icon: mdi:trophy
+            icon_color: light-blue
+            content: "{{ states(\"sensor.walkscape_achievement_points\") }} pts"
+            card_mod:
+              style: |
+                ha-card {
+                  background: linear-gradient(135deg, #1a2332 0%, #2d3748 100%);
+                  --chip-background: rgba(114, 188, 231, 0.2);
+                }
+        alignment: center
+        card_mod:
+          style: |
+            ha-card {
+              background: linear-gradient(135deg, #1a2332 0%, #2d3748 100%);
+              box-shadow: none;
+              border: none;
+            }
+  - type: markdown
+    content: |
+      ## Skills <span style="color: #a0a0a0; font-size: 0.7em;"></span>
+    style: |
+      ha-card {
+        background: linear-gradient(135deg, #1a2332 0%, #2d3748 100%);
+        text-align: center;
+        padding: 20px 24px 10px 24px;
+        box-shadow: none;
+        border: none;
+      }
+      ha-markdown {
+        color: #e8e8e8;
+      }
+  - type: grid
+    columns: 3
+    square: false
+    cards:
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: template
+            icon: mdi:run
+            content: Agility 61/99
+            card_mod:
+              style: |
+                ha-card {
+                  --chip-background: rgba(241, 95, 192, 0.15);
+                  --chip-icon-color: #f15fc0;
+                  --chip-text-color: #f15fc0;
+                  --primary-text-color: #f15fc0;
+                }
+        alignment: center
+        card_mod:
+          style: |
+            ha-card {
+              background: rgba(30, 41, 59, 0.8);
+              border: 1px solid rgba(241, 95, 192, 0.3);
+              border-radius: 12px;
+            }
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: template
+            icon: mdi:hammer
+            content: Carpentry 54/99
+            card_mod:
+              style: |
+                ha-card {
+                  --chip-background: rgba(241, 141, 95, 0.15);
+                  --chip-icon-color: #f18d5f;
+                  --chip-text-color: #f18d5f;
+                  --primary-text-color: #f18d5f;
+                }
+        alignment: center
+        card_mod:
+          style: |
+            ha-card {
+              background: rgba(30, 41, 59, 0.8);
+              border: 1px solid rgba(241, 141, 95, 0.3);
+              border-radius: 12px;
+            }
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: template
+            icon: mdi:pot-steam
+            content: Cooking 55/99
+            card_mod:
+              style: |
+                ha-card {
+                  --chip-background: rgba(241, 173, 95, 0.15);
+                  --chip-icon-color: #f1ad5f;
+                  --chip-text-color: #f1ad5f;
+                  --primary-text-color: #f1ad5f;
+                }
+        alignment: center
+        card_mod:
+          style: |
+            ha-card {
+              background: rgba(30, 41, 59, 0.8);
+              border: 1px solid rgba(241, 173, 95, 0.3);
+              border-radius: 12px;
+            }
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: template
+            icon: mdi:anvil
+            content: Crafting 54/99
+            card_mod:
+              style: |
+                ha-card {
+                  --chip-background: rgba(233, 71, 125, 0.15);
+                  --chip-icon-color: #e9477d;
+                  --chip-text-color: #e9477d;
+                  --primary-text-color: #e9477d;
+                }
+        alignment: center
+        card_mod:
+          style: |
+            ha-card {
+              background: rgba(30, 41, 59, 0.8);
+              border: 1px solid rgba(233, 71, 125, 0.3);
+              border-radius: 12px;
+            }
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: template
+            icon: mdi:fish
+            content: Fishing 56/99
+            card_mod:
+              style: |
+                ha-card {
+                  --chip-background: rgba(95, 219, 241, 0.15);
+                  --chip-icon-color: #5fdbf1;
+                  --chip-text-color: #5fdbf1;
+                  --primary-text-color: #5fdbf1;
+                }
+        alignment: center
+        card_mod:
+          style: |
+            ha-card {
+              background: rgba(30, 41, 59, 0.8);
+              border: 1px solid rgba(95, 219, 241, 0.3);
+              border-radius: 12px;
+            }
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: template
+            icon: mdi:leaf
+            content: Foraging 67/99
+            card_mod:
+              style: |
+                ha-card {
+                  --chip-background: rgba(170, 211, 160, 0.15);
+                  --chip-icon-color: #aad3a0;
+                  --chip-text-color: #aad3a0;
+                  --primary-text-color: #aad3a0;
+                }
+        alignment: center
+        card_mod:
+          style: |
+            ha-card {
+              background: rgba(30, 41, 59, 0.8);
+              border: 1px solid rgba(170, 211, 160, 0.3);
+              border-radius: 12px;
+            }
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: template
+            icon: mdi:pickaxe
+            content: Mining 64/99
+            card_mod:
+              style: |
+                ha-card {
+                  --chip-background: rgba(140, 165, 211, 0.15);
+                  --chip-icon-color: #8ca5d3;
+                  --chip-text-color: #8ca5d3;
+                  --primary-text-color: #8ca5d3;
+                }
+        alignment: center
+        card_mod:
+          style: |
+            ha-card {
+              background: rgba(30, 41, 59, 0.8);
+              border: 1px solid rgba(140, 165, 211, 0.3);
+              border-radius: 12px;
+            }
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: template
+            icon: mdi:fire
+            content: Smithing 59/99
+            card_mod:
+              style: |
+                ha-card {
+                  --chip-background: rgba(226, 167, 167, 0.15);
+                  --chip-icon-color: #e2a7a7;
+                  --chip-text-color: #e2a7a7;
+                  --primary-text-color: #e2a7a7;
+                }
+        alignment: center
+        card_mod:
+          style: |
+            ha-card {
+              background: rgba(30, 41, 59, 0.8);
+              border: 1px solid rgba(226, 167, 167, 0.3);
+              border-radius: 12px;
+            }
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: template
+            icon: mdi:diamond-stone
+            content: Trinketry 50/99
+            card_mod:
+              style: |
+                ha-card {
+                  --chip-background: rgba(255, 225, 171, 0.15);
+                  --chip-icon-color: #ffe1ab;
+                  --chip-text-color: #ffe1ab;
+                  --primary-text-color: #ffe1ab;
+                }
+        alignment: center
+        card_mod:
+          style: |
+            ha-card {
+              background: rgba(30, 41, 59, 0.8);
+              border: 1px solid rgba(255, 225, 171, 0.3);
+              border-radius: 12px;
+            }
+      - type: custom:mushroom-chips-card
+        chips: []
+        card_mod:
+          style: |
+            ha-card {
+              background: transparent;
+              box-shadow: none;
+              border: none;
+            }
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: template
+            icon: mdi:axe
+            content: Woodcutting 57/99
+            card_mod:
+              style: |
+                ha-card {
+                  --chip-background: rgba(95, 241, 107, 0.15);
+                  --chip-icon-color: #5ff16b;
+                  --chip-text-color: #5ff16b;
+                  --primary-text-color: #5ff16b;
+                }
+        alignment: center
+        card_mod:
+          style: |
+            ha-card {
+              background: rgba(30, 41, 59, 0.8);
+              border: 1px solid rgba(95, 241, 107, 0.3);
+              border-radius: 12px;
+            }
+      - type: custom:mushroom-chips-card
+        chips: []
+        card_mod:
+          style: |
+            ha-card {
+              background: transparent;
+              box-shadow: none;
+              border: none;
+            }
+  - type: markdown
+    content: " "
+    style: |
+      ha-card {
+        background: linear-gradient(135deg, #1a2332 0%, #2d3748 100%);
+        border-radius: 0 0 16px 16px;
+        padding: 5px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        border-top: none;
+      }

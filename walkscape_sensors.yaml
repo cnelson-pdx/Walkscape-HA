@@ -1,0 +1,64 @@
+  - resource: https://api.web.walkscape.app/portal/shared/characters/{{ YOUR-CHARACTER-ID }}
+    scan_interval: 900
+    sensor:
+      - name: Walkscape Character Name
+        value_template: "{{ value_json.character_name }}"
+
+      - name: Walkscape Profile
+        value_template: "{{ value_json.id }}"
+
+      - name: Walkscape Total Steps
+        value_template: "{{ value_json.total_steps }}"
+        unit_of_measurement: "steps"
+
+      - name: Walkscape Total XP
+        value_template: "{{ value_json.statistics.total_xp }}"
+        unit_of_measurement: "xp"
+
+      - name: Walkscape Total Level
+        value_template: "{{ value_json.statistics.total_level }}"
+        unit_of_measurement: "level"
+
+      - name: Walkscape Achievement Points
+        value_template: "{{ value_json.statistics.achievement_points }}"
+        unit_of_measurement: "pts"
+
+      - name: Walkscape XP Agility
+        value_template: "{{ value_json.statistics.agility }}"
+        unit_of_measurement: "xp"
+
+      - name: Walkscape XP Carpentry
+        value_template: "{{ value_json.statistics.carpentry }}"
+        unit_of_measurement: "xp"
+
+      - name: Walkscape XP Cooking
+        value_template: "{{ value_json.statistics.cooking }}"
+        unit_of_measurement: "xp"
+
+      - name: Walkscape XP Crafting
+        value_template: "{{ value_json.statistics.crafting }}"
+        unit_of_measurement: "xp"
+
+      - name: Walkscape XP Fishing
+        value_template: "{{ value_json.statistics.fishing }}"
+        unit_of_measurement: "xp"
+
+      - name: Walkscape XP Foraging
+        value_template: "{{ value_json.statistics.foraging }}"
+        unit_of_measurement: "xp"
+
+      - name: Walkscape XP Mining
+        value_template: "{{ value_json.statistics.mining }}"
+        unit_of_measurement: "xp"
+
+      - name: Walkscape XP Smithing
+        value_template: "{{ value_json.statistics.smithing }}"
+        unit_of_measurement: "xp"
+
+      - name: Walkscape XP Trinketry
+        value_template: "{{ value_json.statistics.trinketry }}"
+        unit_of_measurement: "xp"
+
+      - name: Walkscape XP Woodcutting
+        value_template: "{{ value_json.statistics.woodcutting }}"
+        unit_of_measurement: "xp"
