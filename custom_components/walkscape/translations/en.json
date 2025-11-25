@@ -1,0 +1,24 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Set up WalkScape",
+        "description": "Enter your WalkScape character ID from your shared profile URL.\n\nExample: {character_id_example}",
+        "data": {
+          "character_id": "Character ID"
+        },
+        "data_description": {
+          "character_id": "The unique identifier from your WalkScape shared profile URL (e.g., 'sykotic-91f66c1e-08d5-4d94-a07a-5b685a45e68a')"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to WalkScape API. Please check your internet connection and try again.",
+      "invalid_character": "Character not found. Please verify your character ID is correct.",
+      "unknown": "Unexpected error occurred. Please try again."
+    },
+    "abort": {
+      "already_configured": "This character is already configured."
+    }
+  }
+}

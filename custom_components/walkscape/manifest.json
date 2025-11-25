@@ -1,0 +1,12 @@
+{
+  "domain": "walkscape",
+  "name": "WalkScape",
+  "codeowners": ["@yourgithubusername"],
+  "config_flow": true,
+  "documentation": "https://github.com/yourgithubusername/walkscape-homeassistant",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/yourgithubusername/walkscape-homeassistant/issues",
+  "requirements": [],
+  "version": "1.0.0"
+}
