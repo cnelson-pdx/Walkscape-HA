@@ -23,6 +23,7 @@ class WalkScapeDataUpdateCoordinator(DataUpdateCoordinator):
         hass: HomeAssistant,
         session: aiohttp.ClientSession,
         character_id: str,
+        scan_interval: int = SCAN_INTERVAL,
     ) -> None:
         """Initialize."""
         self.session = session
@@ -33,7 +34,7 @@ class WalkScapeDataUpdateCoordinator(DataUpdateCoordinator):
             hass,
             _LOGGER,
             name=DOMAIN,
-            update_interval=timedelta(seconds=SCAN_INTERVAL),
+            update_interval=timedelta(seconds=scan_interval),
         )
 
     async def _async_update_data(self) -> dict[str, Any]:

@@ -1,6 +1,6 @@
 # WalkScape Home Assistant Integration
 
-![Version](https://img.shields.io/badge/version-2025.11.1-blue)
+![Version](https://img.shields.io/badge/version-2025.11.2-blue)
 ![Home Assistant](https://img.shields.io/badge/Home%20Assistant-2024.1.0+-green)
 ![HACS](https://img.shields.io/badge/HACS-Compatible-orange)
 

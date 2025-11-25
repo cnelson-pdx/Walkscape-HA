@@ -12,6 +12,20 @@ and this project uses [Calendar Versioning](https://calver.org/) with the format
 - Additional sensors based on community feedback
 - Enhanced error handling and logging
 
+## [2025.11.2] - 2025-11-25
+
+### Fixed
+- 🐛 Fixed missing scan_interval field in config flow
+- 🐛 Fixed missing options flow handler for runtime configuration
+- 🐛 Fixed coordinator not accepting custom scan_interval parameter
+- 🐛 Fixed __init__.py not passing scan_interval to coordinator
+
+### Technical
+- Added OptionsFlowHandler class for runtime configuration
+- Added async_get_options_flow method to ConfigFlow
+- Added update listener for option changes
+- Coordinator now properly accepts and uses scan_interval parameter
+
 ## [2025.11.1] - 2025-11-25
 
 ### Added
